@@ -1,0 +1,13 @@
+{
+  "author": "Geoffrey Hutchison",
+  "version": 1.0,
+  "url": "https://github.com/openchemistry/avogadro-commands",
+  "name": "avogadro-commands",
+  "description": "Example command scripts",
+  "type": "commands",
+  "commands": [
+    { "name": "Centroid", "command": "centroid.py" },
+    { "name": "Flatten", "command": "flatten.py" },
+    { "name": "Scale", "command": "scale.py" }
+  ]
+}
