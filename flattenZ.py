@@ -48,7 +48,7 @@ if __name__ == "__main__":
     debug = args['debug']
 
     if args['display_name']:
-        print("Flatten Molecule")
+        print("Flatten Z-Axis")
     if args['menu_path']:
         print("&Build")
     if args['print_options']:

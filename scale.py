@@ -48,8 +48,6 @@ def scale(opts, mol):
     yScale = float(opts['Y Scale'])
     zScale = float(opts['Z Scale'])
 
-    # find the centroid, scale and translate back
-
     coords = mol['atoms']['coords']['3d']
     for i in range(0, len(coords), 3):
         coords[i] = coords[i] * xScale

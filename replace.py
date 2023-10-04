@@ -1,7 +1,6 @@
 """
 /******************************************************************************
   This source file is part of the Avogadro project.
-
   This source code is released under the New BSD License, (the "License").
 ******************************************************************************/
 """
@@ -146,12 +145,12 @@ def getOptions():
     userOptions['Find']['default'] = "Carbon"
 
     userOptions['Percent'] = {}
-    userOptions['Percent']['label'] = 'Percentage to be replaced'
+    userOptions['Percent']['label'] = 'Percentage to be Replaced'
     userOptions['Percent']['type'] = 'float'
     userOptions['Percent']['default'] = 100
 
     userOptions['Replace'] = {}
-    userOptions['Replace']['label'] = 'Replace with'
+    userOptions['Replace']['label'] = 'Replace With'
     userOptions['Replace']['type'] = 'stringList'
     userOptions['Replace']['values'] = list(element_dict.keys)
     userOptions['Replace']['default'] = "Carbon"
@@ -166,16 +165,28 @@ def replace_element(opts, mol):
     percent = float(opts['Percent'])
     replace= element_dict.get(opts['Replace'])
 
+    # check if the user has any atoms selected
+    any_selected = False
+    if 'selected' in mol['atoms']:
+        for item in mol['atoms']['selected']:
+            if item:
+                any_selected = True
+                break # we have *some* atoms selected
 
     atomic_numbers = mol['atoms']['elements']['number']
-    occurences = atomic_numbers.count(original)
-    number_of_atoms = int((percent*occurences)/100)
     indices = []
 
     for i, num in enumerate(atomic_numbers):
         if num == original:
-            indices.append(i)
+            # two possibilities - nothing selected => do all atoms
+            if not any_selected:
+                indices.append(i)
+            # or only do selected atoms
+            elif mol['atoms']['selected'][i]:
+                indices.append(i)
 
+    occurences = len(indices)
+    number_of_atoms = int((percent*occurences)/100)
     selected_indices = random.sample(indices, number_of_atoms)
 
     for index in selected_indices:
@@ -210,7 +221,7 @@ if __name__ == "__main__":
     debug = args['debug']
 
     if args['display_name']:
-        print("Replace atoms of Elements")
+        print("Replace Elements")
     if args['menu_path']:
         print("&Build")
     if args['print_options']:
