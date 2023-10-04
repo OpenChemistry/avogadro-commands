@@ -1,5 +1,5 @@
 {
-  "author": "Geoffrey Hutchison",
+  "author": ["Geoffrey Hutchison", "Dhruv J"],
   "version": 1.0,
   "url": "https://github.com/openchemistry/avogadro-commands",
   "name": "avogadro-commands",
@@ -8,6 +8,7 @@
   "commands": [
     { "name": "Centroid", "command": "centroid.py" },
     { "name": "Flatten", "command": "flatten.py" },
-    { "name": "Scale", "command": "scale.py" }
+    { "name": "Scale", "command": "scale.py" },
+    { "name": "Alloy", "command": "replace.py" }
   ]
 }
