@@ -89,5 +89,5 @@ if __name__ == "__main__":
         print("&Build")
     if args['print_options']:
         print(json.dumps(getOptions()))
-    elif args['run_workflow']:
+    elif args['run_command']:
         print(json.dumps(runCommand()))
