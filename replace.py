@@ -198,7 +198,7 @@ def runCommand():
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser('Scale molecular coordinates.')
+    parser = argparse.ArgumentParser('Replace atoms of elements')
     parser.add_argument('--debug', action='store_true')
     parser.add_argument('--print-options', action='store_true')
     parser.add_argument('--run-command', action='store_true')
@@ -210,7 +210,7 @@ if __name__ == "__main__":
     debug = args['debug']
 
     if args['display_name']:
-        print("Scale Coords...")
+        print("Replace atoms of Elements")
     if args['menu_path']:
         print("&Build")
     if args['print_options']:
