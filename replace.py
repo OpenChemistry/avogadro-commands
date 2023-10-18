@@ -142,7 +142,7 @@ def getOptions():
     userOptions['Find'] = {}
     userOptions['Find']['label'] = 'Find Element'
     userOptions['Find']['type'] = 'stringList'
-    userOptions['Find']['values'] = list(element_dict.keys)
+    userOptions['Find']['values'] = list(element_dict.keys())
     userOptions['Find']['default'] = "Carbon"
 
     userOptions['Percent'] = {}
@@ -153,7 +153,7 @@ def getOptions():
     userOptions['Replace'] = {}
     userOptions['Replace']['label'] = 'Replace with'
     userOptions['Replace']['type'] = 'stringList'
-    userOptions['Replace']['values'] = list(element_dict.keys)
+    userOptions['Replace']['values'] = list(element_dict.keys())
     userOptions['Replace']['default'] = "Carbon"
 
     opts = {'userOptions': userOptions}
