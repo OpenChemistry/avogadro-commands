@@ -17,8 +17,28 @@ def getOptions():
 
 def flattenZ(opts, mol):
     coords = mol['atoms']['coords']['3d']
+    # check if the user has any atoms selected
+    any_selected = False
+    if 'selected' in mol['atoms']:
+        for item in mol['atoms']['selected']:
+            if item:
+                any_selected = True
+                break  # we have *some* atoms selected
+    indices = []
+    atomic_numbers = mol['atoms']['elements']['number']
+
+    for i in range(len(atomic_numbers)):
+        if not any_selected:
+            indices.append(i)
+            # or only do selected atoms
+        elif mol['atoms']['selected'][i]:
+            indices.append(i)
+    j = 0
+
     for i in range(0, len(coords), 3):
-        coords[i+2] = 0.0
+        if j in indices:
+            coords[i+2] = 0.0
+        j = j+1
 
     return mol
 
@@ -34,6 +54,7 @@ def runCommand():
     result = {}
     result['cjson'] = flattenZ(opts, opts['cjson'])
     return result
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Flatten Z axis.')
